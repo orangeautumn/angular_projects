@@ -1,0 +1,41 @@
+<p>{{ title }}</p>
+<div>
+  <div>
+    <div>
+      <label> Search a Image </label>
+
+      <input
+        [(ngModel)]="searchInput"
+        value="{{ searchInput }}"
+        placeholder="searchInput"
+        (ngModelChange)="searchImages()"
+      />
+      <button value="Search" (click)="searchImages()">Search</button>
+      <div *ngIf="searchImageList" style="display: flex; flex-wrap: wrap">
+        <li *ngFor="let image of searchImageList">
+          <label>{{ image.name }} </label>
+          <img
+            src="{{ image.image }}"
+            height="50px"
+            width="50px"
+            alt="{{ image.name }}"
+          />
+        </li>
+      </div>
+    </div>
+
+    <label> List of Images</label>
+    <button (click)="loadMoreImages()">Load More Images</button>
+    <div *ngIf="imagesList" style="display: flex; flex-wrap: wrap">
+      <li *ngFor="let image of imagesList">
+        <label>{{ image.name }} </label>
+        <img
+          src="{{ image.image }}"
+          height="50px"
+          width="50px"
+          alt="{{ image.name }}"
+        />
+      </li>
+    </div>
+  </div>
+</div>
